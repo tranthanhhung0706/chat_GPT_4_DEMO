@@ -10,16 +10,24 @@
   },
   "dependencies": {
     "assistants-nextjs": "file:",
+    "axios": "^1.7.7",
+    "cookie": "^0.6.0",
+    "eslint": "^9.10.0",
+    "eslint-config-next": "^14.2.12",
+    "jsonwebtoken": "^9.0.2",
     "next": "14.1.4",
-    "openai": "^4.46.0",
+    "openai": "^4.61.0",
+    "postcss": "^8.4.47",
     "react": "^18",
     "react-dom": "^18",
-    "react-markdown": "^9.0.1"
+    "react-markdown": "^9.0.1",
+    "react-router-dom": "^6.26.2"
   },
   "devDependencies": {
-    "@types/node": "20.12.7",
-    "@types/react": "18.2.79",
-    "typescript": "5.4.5"
+    "@types/node": "^20.3.1",
+    "@types/react": "^18.2.12",
+    "@types/react-dom": "^18.2.5",
+    "typescript": "^5.4.5"
   },
   "prettier": {
     "singleQuote": false

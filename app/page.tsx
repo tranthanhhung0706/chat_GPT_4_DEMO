@@ -1,30 +1,73 @@
 "use client";
 
-import React from "react";
+import axios, { AxiosError } from "axios";
+import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
+export default function Home() {
+  const { push } = useRouter();
 
-const Home = () => {
-  const categories = {
-    "Basic chat": "basic-chat",
-    "Function calling": "function-calling",
-    "File search": "file-search",
-    All: "all",
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const payload = {
+      username: event.currentTarget.username.value,
+      password: event.currentTarget.password.value,
+    };
+
+    try {
+      const { data } = await axios.post("/api/auth/login", payload);
+
+      alert("Đăng nhập thành công");
+
+      
+      push("/examples");
+    } catch (e) {
+      const error = e as AxiosError;
+
+      alert("Đăng nhập thất bại");
+    }
   };
 
   return (
-    <main className={styles.main}>
-      <div className={styles.title}>
-        Explore sample apps built with Assistants API
+    <main>
+      <form onSubmit={handleSubmit} >
+        <div  className={styles.mainContainer}>
+      <div className={styles.titleContainer}>
+        <div>Login</div>
       </div>
-      <div className={styles.container}>
-        {Object.entries(categories).map(([name, url]) => (
-          <a key={name} className={styles.category} href={`/examples/${url}`}>
-            {name}
-          </a>
-        ))}
+      <br />
+      <div className={styles.inputContainer}>
+      <input
+            type="text"
+            id="username"
+            name="username"
+            required
+            className={styles.inputBox}
+          />
+        
       </div>
+      <br />
+      <div className={styles.inputContainer}>
+      <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            className={styles.inputBox}
+          />
+        
+      </div>
+      <br />
+      <div className={styles.inputContainer}>
+        <input className={styles.inputButton} type="submit"  value={'Log in'} />
+      </div>
+    </div>
+      </form>
     </main>
-  );
-};
 
-export default Home;
+  );
+}
+
+
+
+
