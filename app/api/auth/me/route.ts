@@ -12,6 +12,7 @@ export async function GET() {
     return NextResponse.json(
       {
         message: "Unauthorized",
+        data:"fail",
         token:token
       },
       {

@@ -33,7 +33,7 @@ export default function Home() {
       <form onSubmit={handleSubmit} >
         <div  className={styles.mainContainer}>
       <div className={styles.titleContainer}>
-        <div>Login</div>
+        <div>Login account</div>
       </div>
       <br />
       <div className={styles.inputContainer}>
